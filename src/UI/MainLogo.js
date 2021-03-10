@@ -9,15 +9,15 @@ align-items:center;
 justify-content: center;
 
 p {
-    font-size: 40px;
+    font-size: 32px;
     color: #F3E6FF;
     font-family: 'Lato', sans-serif;
 }
 `;
 
 const LogoSVG = styled(Logo)`
-width: 40px;
-height: 54px;
+width: 36px;
+height: 50px;
 margin-left: 8px;
 `;
 
