@@ -9,5 +9,13 @@ border: none;
 margin-top: 2rem;
 color: #f3e6ff;
 font-size: 14px;
+&:active{
+    background-color:#5a2290;
+    border: none;
+}
+&:hover{
+    background-color:#5a2290;
+    border: none;
+}
 `;
 
