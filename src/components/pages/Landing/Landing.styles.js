@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import "../../../UI/Fonts.css";
 import { ReactComponent as LearningSVG } from "../../../Icons/Learning.svg";
 
 export const Discription = styled.p`
