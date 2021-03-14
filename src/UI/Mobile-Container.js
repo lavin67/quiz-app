@@ -5,7 +5,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  background: #14081F;
+  background: ${(props) => props.theme.colors.backgroundColor};
   margin: 0 auto;
 
   // Law 7ajma baraw sarawa

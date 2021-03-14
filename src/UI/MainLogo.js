@@ -10,7 +10,7 @@ justify-content: center;
 
 p {
     font-size: 32px;
-    color: #F3E6FF;
+    color: ${(props) => props.theme.colors.textColor};
     font-family: 'Lato', sans-serif;
 }
 `;
