@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import MobileContainer from "../../../UI/Mobile-Container";
 import MainLogo from "../../../UI/MainLogo";
-import "../../../UI/Fonts.css";
 import {
   StyledNavLink,
   Container,
@@ -13,6 +12,7 @@ import {
 import { Button } from "../../../UI/Button";
 import { Input } from "../../../UI/Input";
 import { Select } from "../../../UI/Select";
+import { NavLink } from "react-router-dom";
 
 import axios from "axios";
 
@@ -22,12 +22,11 @@ const api = axios.create({
 });
 
 const QuizPropertyPage = () => {
-
-//from here
+  //from here
   const [name, setName] = useState({
     userName: "",
   });
-  const { userName} = name;
+  const { userName } = name;
   const onChange = (e) => {
     setName({
       ...name,
@@ -42,12 +41,15 @@ const QuizPropertyPage = () => {
 
   //till here, is to make the name input work.
 
+  const [currentAmount, setCurrentAmount] = useState();
 
-  const [currentAmount, setCurrentAmount] = useState({});
-
-  api.get("/").then((res) => {
-    console.log(res.data);
-  });
+  api
+    .get(
+      "https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple"
+    )
+    .then((res) => {
+      console.log(res.data.results);
+    });
 
   return (
     <MobileContainer>
@@ -89,7 +91,11 @@ const QuizPropertyPage = () => {
         </Select>
       </QuizPropsContainer>
       <ButtonContainer>
-        <Button>START</Button>
+        <NavLink to="/questions">
+          <Button primary style={{ marginTop: "1rem" }}>
+            START
+          </Button>
+        </NavLink>
       </ButtonContainer>
     </MobileContainer>
   );

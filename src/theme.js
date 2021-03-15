@@ -4,7 +4,8 @@ const theme = {
     inputColor: `#1d0e2b`,
     backgroundColor: `#14081F`,
     textColor : `#f3e6ff`,
-    border: `1px solid #8030cd`
+    border: `1px solid #8030cd`,
+    secondaryTextColor: `#615C66`,
   },
 };
 

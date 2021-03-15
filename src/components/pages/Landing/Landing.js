@@ -1,7 +1,6 @@
 import React from "react";
 import MobileContainer from "../../../UI/Mobile-Container";
 import MainLogo from "../../../UI/MainLogo";
-import "../../../UI/Fonts.css";
 import { Discription, LearningIcon, Container } from "./Landing.styles";
 import { Button } from "../../../UI/Button";
 import { NavLink } from "react-router-dom";
@@ -17,7 +16,9 @@ const LandingPage = () => {
       </Discription>
 
       <NavLink to="/quiz-property">
-        <Button>START THE QUIZ</Button>
+        <Button style={{ marginTop: "2rem" }} primary>
+          START THE QUIZ
+        </Button>
       </NavLink>
       <Container>
         <LearningIcon />

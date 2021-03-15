@@ -1,11 +1,9 @@
-import styled from 'styled-components';
-import "../../../UI/Fonts.css";
+import styled from "styled-components";
 import { ReactComponent as LearningSVG } from "../../../Icons/Learning.svg";
 
 export const Discription = styled.p`
-  color: #f3e6ff;
+  color: ${(props) => props.theme.colors.textColor};
   font-size: 20px;
-  font-family: "Lato", sans-serif;
   line-height: 32px;
 `;
 

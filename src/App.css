@@ -1,8 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+
 .App {
   background-color: #14081F;
   position: absolute;
   width: 100%;
   min-height: 100%;
   left: 0;
-  top: 0
+  top: 0;
+  font-family: "Lato", sans-serif;
+
 }
+
+
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
