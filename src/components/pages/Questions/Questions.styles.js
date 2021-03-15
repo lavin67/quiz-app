@@ -54,7 +54,9 @@ export const FooterContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-top: 2rem;
   a {
     color: ${(props) => props.theme.colors.textColor};
+    text-decoration: none;
   }
 `;
