@@ -56,7 +56,7 @@ export const FooterContainer = styled.div`
   align-items: center;
   margin-top: 2rem;
   a {
-    color: ${(props) => props.theme.colors.textColor};
+    color: ${(props) => props.theme.colors.secondaryTextColor};
     text-decoration: none;
   }
 `;
