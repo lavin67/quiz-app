@@ -8,6 +8,10 @@ export const Button = styled.button`
   /* margin-top: 2rem; */
   font-size: 14px;
   outline: none;
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
   ${(props) =>
     props.primary &&
     css`
