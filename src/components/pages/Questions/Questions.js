@@ -14,7 +14,7 @@ import {
   FooterContainer,
 } from "./Questions.styles";
 
-const Questions = () => {
+const Questions = ({category}) => {
   return (
     <MobileContainer>
       <HeaderContainer>
