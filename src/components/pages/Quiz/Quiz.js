@@ -12,9 +12,14 @@ import {
   TheQuestion,
   OptionsContainer,
   FooterContainer,
-} from "./Questions.styles";
+} from "./Quiz.styles";
 
-const Questions = ({category}) => {
+const Questions = ({ category }) => {
+  //  // api
+  //   .get(
+  //     `https://opentdb.com/api.php?amount=${amount}&category=${selectedCategory}&difficulty=${difficulty}&type=${type}`
+  //   )
+  //   .then((res) => console.log(res.data));
   return (
     <MobileContainer>
       <HeaderContainer>
