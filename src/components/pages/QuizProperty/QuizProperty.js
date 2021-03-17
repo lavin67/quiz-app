@@ -12,7 +12,7 @@ import {
 import { Button } from "../../../UI/Button";
 import { Input } from "../../../UI/Input";
 import { Select } from "../../../UI/Select";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 import axios from "axios";
 
@@ -29,6 +29,8 @@ const QuizPropertyPage = () => {
   const [type, setType] = useState("");
   const [difficulty, setDifficulty] = useState("");
   const [submitted, setSubmitted] = useState(false);
+
+  const history = useHistory();
 
   const onSthChange = () => {
     api
@@ -67,16 +69,10 @@ const QuizPropertyPage = () => {
   };
 
   const onClick = () => {
-    api
-      .get(
-        `https://opentdb.com/api.php?amount=${amount}&category=${selectedCategory}&difficulty=${difficulty}&type=${type}`
-      )
-      .then((res) => console.log(res.data));
+  history.push(
+      `/quiz?amount=${amount}&category=${selectedCategory}&difficulty=${difficulty}&type=${type}`
+    );
   };
-
-  //  api.get(
-  //     `https://opentdb.com/api_count.php?category=${selectedCategory}`
-  //   ); //Category Question Count Lookup: Returns the number of questions in the database, in a specific category
 
   return (
     <MobileContainer>
@@ -87,7 +83,7 @@ const QuizPropertyPage = () => {
 
         {/* name section */}
         <StyledNameLabel>What's your name?</StyledNameLabel>
-        <Input onChange={onNameChange} value={name}/>
+        <Input onChange={onNameChange} value={name} />
       </Container>
 
       {/* number of questions */}
@@ -151,13 +147,13 @@ const QuizPropertyPage = () => {
             " : " +
             selectedCategory +
             " : " +
-            amount + " : " + name}
+            amount +
+            " : " +
+            name}
         </div>
-        <NavLink to="/questions">
-          <Button onClick={onClick} primary style={{ marginTop: "1rem" }}>
-            START
-          </Button>
-        </NavLink>
+        <Button onClick={onClick} primary style={{ marginTop: "1rem" }}>
+          START
+        </Button>
       </ButtonContainer>
     </MobileContainer>
   );
