@@ -140,7 +140,7 @@ const QuizPropertyPage = () => {
         </Select>
       </QuizPropsContainer>
       <ButtonContainer>
-        <div style={{ color: "white" }}>
+        {/* <div style={{ color: "white" }}>
           {difficulty +
             " : " +
             type +
@@ -150,7 +150,7 @@ const QuizPropertyPage = () => {
             amount +
             " : " +
             name}
-        </div>
+        </div> */}
         <Button onClick={onClick} primary style={{ marginTop: "1rem" }}>
           START
         </Button>
