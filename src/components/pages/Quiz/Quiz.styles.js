@@ -55,6 +55,9 @@ export const FooterContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 2rem;
+ 
+  
+  
   a {
     color: ${(props) => props.theme.colors.secondaryTextColor};
     text-decoration: none;
