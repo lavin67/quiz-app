@@ -12,7 +12,7 @@ import {
 import { Button } from "../../../UI/Button";
 import { Input } from "../../../UI/Input";
 import { Select } from "../../../UI/Select";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import axios from "axios";
 
@@ -69,7 +69,7 @@ const QuizPropertyPage = () => {
   };
 
   const onClick = () => {
-  history.push(
+    history.push(
       `/quiz?amount=${amount}&category=${selectedCategory}&difficulty=${difficulty}&type=${type}`
     );
   };
