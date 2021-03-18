@@ -4,6 +4,7 @@ import MainLogo from "../../../UI/MainLogo";
 import { Button } from "../../../UI/Button";
 import { Input } from "../../../UI/Input";
 import { NavLink, useLocation } from "react-router-dom";
+import Result from '../Result/Result'
 import {
   LuckIcon,
   Container,
@@ -33,10 +34,10 @@ function shuffle(array) {
 const Questions = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [currentQuestionNumber, setCurrentQuestionNumber] = useState(0);
+  const [result, setResult] = useState(false);
+  const [score, setScore] =useState(0);
   const location = useLocation();
   const query = queryString.parse(location.search);
-
   const selectedCategory = query.category;
   const amount = query.amount;
   const difficulty = query.difficulty;
@@ -44,23 +45,28 @@ const Questions = () => {
 
   const handleSelectedAnswer = (answer) => {
     console.log(answer === questions[currentQuestion].correctAnswer);
+    if(answer === questions[currentQuestion].correctAnswer){
+      setScore(score+1);
+      console.log(score)
+    };
   };
 
   const handleNextButton = () => {
-    // let nextQuestion=questions[currentQuestion];
-    // setCurrentQuestion(nextQuestion++);
-    // console.log(nextQuestion)
-// if(currentQuestion !==questions.length-1) {
-//   console.log(currentQuestion++)
-// }
 
 if (currentQuestion < questions.length-1){
   setCurrentQuestion(currentQuestion+1);
   console.log(currentQuestion);
-
+}else{
+  console.log("finished bitch");
+   setResult(true);
 }
-
   }
+
+  const handleFinishButton = () => {
+   
+    
+    
+  };
 
   useEffect(() => {
     api
@@ -89,8 +95,11 @@ if (currentQuestion < questions.length-1){
   }, []);
 
   return (
+    
     <>
-      {questions.length > 0 && (
+    { result ? <Result questions={questions} score={score}/> :
+    <>
+    {questions.length > 0 && (
         <MobileContainer>
           <HeaderContainer>
             <CategoryName>{questions[currentQuestion].category}</CategoryName>
@@ -120,7 +129,9 @@ if (currentQuestion < questions.length-1){
               </OptionsContainer>
               <FooterContainer>
                 <NavLink to="/quiz-property">Quit quiz :(</NavLink>
-                <Button primary onClick={() => handleNextButton()}>NEXT</Button>
+                {currentQuestion < questions.length-1 ?  <Button primary onClick={() => handleNextButton()}>NEXT</Button>
+                : <Button primary onClick={() => handleNextButton()}>FINISH</Button>}
+               
               </FooterContainer>
             </div>
           ) : (
@@ -140,15 +151,17 @@ if (currentQuestion < questions.length-1){
                   );
                 })}
               </OptionsContainer>
-              <FooterContainer style={{ marginTop: "9rem" }}>
+              <FooterContainer>
                 <NavLink to="/quiz-property">Quit quiz :(</NavLink>
-                <Button primary onClick={() => handleNextButton()}
-                      >NEXT</Button>
+                  {currentQuestion < questions.length-1 ?  <Button primary onClick={() => handleNextButton()}>NEXT</Button>
+                : <Button primary onClick={() => handleNextButton()}>FINISH</Button>}
               </FooterContainer>
             </div>
           )}
         </MobileContainer>
-      )}
+        
+      )}</> }
+      
     </>
   );
 };
