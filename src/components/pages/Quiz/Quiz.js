@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MobileContainer from "../../../UI/Mobile-Container";
 import MainLogo from "../../../UI/MainLogo";
 import { Button } from "../../../UI/Button";
 import { Input } from "../../../UI/Input";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import {
   LuckIcon,
   Container,
@@ -14,33 +14,142 @@ import {
   FooterContainer,
 } from "./Quiz.styles";
 
-const Questions = ({ category }) => {
-  //  // api
-  //   .get(
-  //     `https://opentdb.com/api.php?amount=${amount}&category=${selectedCategory}&difficulty=${difficulty}&type=${type}`
-  //   )
-  //   .then((res) => console.log(res.data));
+import axios from "axios";
+
+import queryString from "query-string";
+
+const api = axios.create({
+  baseURL:
+    "https://opentdb.com/api.php?amount=10&category=27&difficulty=medium&type=multiple",
+});
+
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+const Questions = () => {
+  const [questions, setQuestions] = useState([]);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentQuestionNumber, setCurrentQuestionNumber] = useState(0);
+  const location = useLocation();
+  const query = queryString.parse(location.search);
+
+  const selectedCategory = query.category;
+  const amount = query.amount;
+  const difficulty = query.difficulty;
+  const type = query.type;
+
+  const handleSelectedAnswer = (answer) => {
+    console.log(answer === questions[currentQuestion].correctAnswer);
+  };
+
+  const handleNextButton = () => {
+    // let nextQuestion=questions[currentQuestion];
+    // setCurrentQuestion(nextQuestion++);
+    // console.log(nextQuestion)
+// if(currentQuestion !==questions.length-1) {
+//   console.log(currentQuestion++)
+// }
+
+if (currentQuestion < questions.length-1){
+  setCurrentQuestion(currentQuestion+1);
+  console.log(currentQuestion);
+
+}
+
+  }
+
+  useEffect(() => {
+    api
+      .get(
+        `https://opentdb.com/api.php?amount=${amount}&category=${selectedCategory}&difficulty=${difficulty}&type=${type}`
+      )
+      .then((res) => {
+        const questions = res.data.results.map((question) => {
+          const incorrectAnswers = question.incorrect_answers;
+          const correctAnswers = question.correct_answer;
+          const answers = [...incorrectAnswers, correctAnswers];
+          shuffle(answers);
+
+          return {
+            question: question.question,
+            answers,
+            correctAnswer: question.correct_answer,
+            category: question.category,
+            type: question.type,
+          };
+        });
+
+        setQuestions(questions);
+        console.log(type);
+      });
+  }, []);
+
   return (
-    <MobileContainer>
-      <HeaderContainer>
-        <CategoryName>Biology Quiz</CategoryName>
-        <Container>
-          <p>Question 1/2</p>
-          <LuckIcon />
-        </Container>
-      </HeaderContainer>
-      <TheQuestion>The energy released by 1 gram of glucose is ?</TheQuestion>
-      <OptionsContainer>
-        <Button secondary>100</Button>
-        <Button secondary>200</Button>
-        <Button secondary>300</Button>
-        <Button secondary>400</Button>
-      </OptionsContainer>
-      <FooterContainer>
-        <NavLink to="/quiz-property">Quit quiz :(</NavLink>
-        <Button primary>NEXT</Button>
-      </FooterContainer>
-    </MobileContainer>
+    <>
+      {questions.length > 0 && (
+        <MobileContainer>
+          <HeaderContainer>
+            <CategoryName>{questions[currentQuestion].category}</CategoryName>
+            <Container>
+              <p>
+                Question {currentQuestion + 1}/{questions.length}
+              </p>
+              <LuckIcon />
+            </Container>
+          </HeaderContainer>
+
+          <TheQuestion>{questions[currentQuestion].question}</TheQuestion>
+          {type === "multiple" ? (
+            <div>
+              <OptionsContainer>
+                {questions[currentQuestion].answers.map((answer) => {
+                  return (
+                    <Button
+                      secondary
+                      onClick={() => handleSelectedAnswer(answer)}
+                      key={answer}
+                    >
+                      {answer}
+                    </Button>
+                  );
+                })}
+              </OptionsContainer>
+              <FooterContainer>
+                <NavLink to="/quiz-property">Quit quiz :(</NavLink>
+                <Button primary onClick={() => handleNextButton()}>NEXT</Button>
+              </FooterContainer>
+            </div>
+          ) : (
+            <div>
+              <OptionsContainer
+              //style={{ marginBottom: "6rem" }}
+              >
+                {questions[currentQuestion].answers.map((answer) => {
+                  return (
+                    <Button
+                      secondary
+                      onClick={() => handleSelectedAnswer(answer)}
+                      key={answer}
+                    >
+                      {answer}
+                    </Button>
+                  );
+                })}
+              </OptionsContainer>
+              <FooterContainer style={{ marginTop: "9rem" }}>
+                <NavLink to="/quiz-property">Quit quiz :(</NavLink>
+                <Button primary onClick={() => handleNextButton()}
+                      >NEXT</Button>
+              </FooterContainer>
+            </div>
+          )}
+        </MobileContainer>
+      )}
+    </>
   );
 };
 
