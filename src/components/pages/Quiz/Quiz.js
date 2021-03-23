@@ -119,11 +119,9 @@ const Questions = () => {
                       return (
                         <Button
                           secondary
+                          isSelected={selectedAnswer === answer}
                           onClick={() => handleSelectedAnswer(answer)}
                           key={answer}
-                          style={{
-                            background: selectedAnswer === answer ? "red" : "",
-                          }}
                         >
                           {answer}
                         </Button>
@@ -142,7 +140,11 @@ const Questions = () => {
                         NEXT
                       </Button>
                     ) : (
-                      <Button primary onClick={() => handleNextButton()}>
+                      <Button
+                        primary
+                        onClick={() => handleNextButton()}
+                        disabled={selectedAnswer.length === 0 ? true : false}
+                      >
                         FINISH
                       </Button>
                     )}
@@ -153,27 +155,40 @@ const Questions = () => {
                   <OptionsContainer
                   //style={{ marginBottom: "6rem" }}
                   >
-                    {questions[currentQuestion].answers.map((answer) => {
-                      return (
-                        <Button
-                          secondary
-                          onClick={() => handleSelectedAnswer(answer)}
-                          key={answer}
-                        >
-                          {answer}
-                        </Button>
-                      );
-                    })}
+                    {questions[currentQuestion].answers
+                      .sort()
+                      .reverse()
+                      .map((answer) => {
+                        // {console.log(questions[currentQuestion].answers)}
+                        return (
+                          <Button
+                            secondary
+                            onClick={() => handleSelectedAnswer(answer)}
+                            key={answer}
+                            isSelected={selectedAnswer === answer}
+                          >
+                            {answer}
+                          </Button>
+                        );
+                      })}
                   </OptionsContainer>
-                  {selectedAnswer}
+                  {/* {selectedAnswer} */}
                   <FooterContainer>
                     <NavLink to="/quiz-property">Quit quiz :(</NavLink>
                     {currentQuestion < questions.length - 1 ? (
-                      <Button primary onClick={() => handleNextButton()}>
+                      <Button
+                        primary
+                        onClick={() => handleNextButton()}
+                        disabled={selectedAnswer.length === 0 ? true : false}
+                      >
                         NEXT
                       </Button>
                     ) : (
-                      <Button primary onClick={() => handleNextButton()}>
+                      <Button
+                        primary
+                        onClick={() => handleNextButton()}
+                        disabled={selectedAnswer.length === 0 ? true : false}
+                      >
                         FINISH
                       </Button>
                     )}

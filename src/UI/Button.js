@@ -48,4 +48,14 @@ export const Button = styled.button`
       } */
       outline: none;
     `}
+    ${(props) =>
+    props.isSelected &&
+    css`
+      color: ${(props) => props.theme.colors.textColor};
+      background-color: ${(props) => props.theme.colors.inputColor};
+      border: ${(props) => props.theme.colors.border};
+
+      outline: none;
+    `}
+    
 `;
