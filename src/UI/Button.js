@@ -33,19 +33,19 @@ export const Button = styled.button`
     css`
       color: ${(props) => props.theme.colors.textColor};
       background-color: ${(props) => props.theme.colors.inputColor};
-
+      /* 
       &:active {
         border: ${(props) => props.theme.colors.border};
         background-color: ${(props) => props.theme.colors.inputColor};
-      }
-      &:hover {
+      } */
+      /* &:hover {
         border: ${(props) => props.theme.colors.border};
         background-color: ${(props) => props.theme.colors.inputColor};
-      }
-      &:focus {
+      } */
+      /* &:focus {
         border: ${(props) => props.theme.colors.border};
         background-color: ${(props) => props.theme.colors.inputColor};
-      }
+      } */
       outline: none;
     `}
 `;

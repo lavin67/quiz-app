@@ -4,7 +4,7 @@ import MainLogo from "../../../UI/MainLogo";
 import { Button } from "../../../UI/Button";
 import { Input } from "../../../UI/Input";
 import { NavLink, useLocation } from "react-router-dom";
-import Result from '../Result/Result'
+import Result from "../Result/Result";
 import {
   LuckIcon,
   Container,
@@ -35,7 +35,8 @@ const Questions = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [result, setResult] = useState(false);
-  const [score, setScore] =useState(0);
+  const [score, setScore] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState("");
   const location = useLocation();
   const query = queryString.parse(location.search);
   const selectedCategory = query.category;
@@ -44,28 +45,24 @@ const Questions = () => {
   const type = query.type;
 
   const handleSelectedAnswer = (answer) => {
-    console.log(answer === questions[currentQuestion].correctAnswer);
-    if(answer === questions[currentQuestion].correctAnswer){
-      setScore(score+1);
-      console.log(score)
-    };
+    setSelectedAnswer(answer);
+    //console.log(answer === questions[currentQuestion].correctAnswer);
+    if (answer === questions[currentQuestion].correctAnswer) {
+      setScore(score + 1);
+      //console.log(score)
+    }
   };
 
   const handleNextButton = () => {
-
-if (currentQuestion < questions.length-1){
-  setCurrentQuestion(currentQuestion+1);
-  console.log(currentQuestion);
-}else{
-  console.log("finished bitch");
-   setResult(true);
-}
-  }
-
-  const handleFinishButton = () => {
-   
-    
-    
+    console.log("im here bitch");
+setSelectedAnswer('');
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+      console.log(currentQuestion);
+    } else {
+      console.log("finished bitch");
+      setResult(true);
+    }
   };
 
   useEffect(() => {
@@ -95,73 +92,98 @@ if (currentQuestion < questions.length-1){
   }, []);
 
   return (
-    
     <>
-    { result ? <Result questions={questions} score={score}/> :
-    <>
-    {questions.length > 0 && (
-        <MobileContainer>
-          <HeaderContainer>
-            <CategoryName>{questions[currentQuestion].category}</CategoryName>
-            <Container>
-              <p>
-                Question {currentQuestion + 1}/{questions.length}
-              </p>
-              <LuckIcon />
-            </Container>
-          </HeaderContainer>
+      {result ? (
+        <Result questions={questions} score={score} />
+      ) : (
+        <>
+          {questions.length > 0 && (
+            <MobileContainer>
+              <HeaderContainer>
+                <CategoryName>
+                  {questions[currentQuestion].category}
+                </CategoryName>
+                <Container>
+                  <p>
+                    Question {currentQuestion + 1}/{questions.length}
+                  </p>
+                  <LuckIcon />
+                </Container>
+              </HeaderContainer>
 
-          <TheQuestion>{questions[currentQuestion].question}</TheQuestion>
-          {type === "multiple" ? (
-            <div>
-              <OptionsContainer>
-                {questions[currentQuestion].answers.map((answer) => {
-                  return (
-                    <Button
-                      secondary
-                      onClick={() => handleSelectedAnswer(answer)}
-                      key={answer}
-                    >
-                      {answer}
-                    </Button>
-                  );
-                })}
-              </OptionsContainer>
-              <FooterContainer>
-                <NavLink to="/quiz-property">Quit quiz :(</NavLink>
-                {currentQuestion < questions.length-1 ?  <Button primary onClick={() => handleNextButton()}>NEXT</Button>
-                : <Button primary onClick={() => handleNextButton()}>FINISH</Button>}
-               
-              </FooterContainer>
-            </div>
-          ) : (
-            <div>
-              <OptionsContainer
-              //style={{ marginBottom: "6rem" }}
-              >
-                {questions[currentQuestion].answers.map((answer) => {
-                  return (
-                    <Button
-                      secondary
-                      onClick={() => handleSelectedAnswer(answer)}
-                      key={answer}
-                    >
-                      {answer}
-                    </Button>
-                  );
-                })}
-              </OptionsContainer>
-              <FooterContainer>
-                <NavLink to="/quiz-property">Quit quiz :(</NavLink>
-                  {currentQuestion < questions.length-1 ?  <Button primary onClick={() => handleNextButton()}>NEXT</Button>
-                : <Button primary onClick={() => handleNextButton()}>FINISH</Button>}
-              </FooterContainer>
-            </div>
+              <TheQuestion>{questions[currentQuestion].question}</TheQuestion>
+              {type === "multiple" ? (
+                <div>
+                  <OptionsContainer>
+                    {questions[currentQuestion].answers.map((answer) => {
+                      return (
+                        <Button
+                          secondary
+                          onClick={() => handleSelectedAnswer(answer)}
+                          key={answer}
+                          style={{
+                            background: selectedAnswer === answer ? "red" : "",
+                          }}
+                        >
+                          {answer}
+                        </Button>
+                      );
+                    })}
+                  </OptionsContainer>
+                  <FooterContainer>
+                    {console.log(selectedAnswer)}
+                    <NavLink to="/quiz-property">Quit quiz :(</NavLink>
+                    {currentQuestion < questions.length - 1 ? (
+                      <Button
+                        primary
+                        onClick={() => handleNextButton()}
+                        disabled={selectedAnswer.length === 0 ? true : false}
+                      >
+                        NEXT
+                      </Button>
+                    ) : (
+                      <Button primary onClick={() => handleNextButton()}>
+                        FINISH
+                      </Button>
+                    )}
+                  </FooterContainer>
+                </div>
+              ) : (
+                <div>
+                  <OptionsContainer
+                  //style={{ marginBottom: "6rem" }}
+                  >
+                    {questions[currentQuestion].answers.map((answer) => {
+                      return (
+                        <Button
+                          secondary
+                          onClick={() => handleSelectedAnswer(answer)}
+                          key={answer}
+                        >
+                          {answer}
+                        </Button>
+                      );
+                    })}
+                  </OptionsContainer>
+                  {selectedAnswer}
+                  <FooterContainer>
+                    <NavLink to="/quiz-property">Quit quiz :(</NavLink>
+                    {currentQuestion < questions.length - 1 ? (
+                      <Button primary onClick={() => handleNextButton()}>
+                        NEXT
+                      </Button>
+                    ) : (
+                      <Button primary onClick={() => handleNextButton()}>
+                        FINISH
+                      </Button>
+                    )}
+                  </FooterContainer>
+                </div>
+              )}
+            </MobileContainer>
           )}
-        </MobileContainer>
-        
-      )}</> }
-      
+        </>
+      )}
     </>
   );
 };
