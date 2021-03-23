@@ -55,7 +55,7 @@ const Questions = () => {
 
   const handleNextButton = () => {
     console.log("im here bitch");
-setSelectedAnswer('');
+    setSelectedAnswer("");
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
       console.log(currentQuestion);

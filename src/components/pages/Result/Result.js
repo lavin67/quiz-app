@@ -19,7 +19,7 @@ import {
   TequilaIcon,
   VodkaIcon,
   CocktailIcon,
-  CocktailContainer
+  CocktailContainer,
 } from "./Result.styles";
 
 const Result = ({ questions, score }) => {
@@ -67,7 +67,7 @@ const Result = ({ questions, score }) => {
               </p>
             </HeaderContainer>
             <CocktailContainer>
-             <CocktailIcon/>
+              <CocktailIcon />
             </CocktailContainer>
             <ButtonContainer>
               <NavLink to="/quiz-property">
