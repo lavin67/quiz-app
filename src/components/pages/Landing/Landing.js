@@ -1,7 +1,7 @@
 import React from "react";
 import MobileContainer from "../../../UI/Mobile-Container";
 import MainLogo from "../../../UI/MainLogo";
-import { Discription, LearningIcon, Container } from "./Landing.styles";
+import { Discription, LearningIcon, LearningIconContainer } from "./Landing.styles";
 import { Button } from "../../../UI/Button";
 import { NavLink } from "react-router-dom";
 
@@ -20,9 +20,9 @@ const LandingPage = () => {
           START THE QUIZ
         </Button>
       </NavLink>
-      <Container>
+      <LearningIconContainer>
         <LearningIcon />
-      </Container>
+      </LearningIconContainer>
     </MobileContainer>
   );
 };

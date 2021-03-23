@@ -11,7 +11,7 @@ export const LearningIcon = styled(LearningSVG)`
   height: 236px;
   width: 321px;
 `;
-export const Container = styled.div`
+export const LearningIconContainer = styled.div`
   display: flex;
   margin-top: 1rem;
 `;
