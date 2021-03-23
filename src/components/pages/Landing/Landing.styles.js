@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ReactComponent as LearningSVG } from "../../../Icons/Learning.svg";
 
-export const Discription = styled.p`
+export const Description = styled.p`
   color: ${(props) => props.theme.colors.textColor};
   font-size: 20px;
   line-height: 32px;

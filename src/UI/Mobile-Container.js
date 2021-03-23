@@ -12,6 +12,11 @@ const Container = styled.div`
   @media ${devices.mobileS} {
     max-width: ${sizes.mobileS};
   }
+  
+  @media ${devices.laptopM} {
+    max-width: ${sizes.laptopM};
+  }
+
 `;
 
 export default Container;
