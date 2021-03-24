@@ -21,62 +21,86 @@ import {
   CocktailIcon,
   CocktailContainer,
 } from "./Result.styles";
+import Prize from '../Prize/Prize';
 
 const Result = ({ questions, score }) => {
+
+  const [SelectedPrize, setSelectedPrize] = useState(false);
+
+const handleSelectedPrize = () => {
+  setSelectedPrize(true);
+}
+
   return (
     <>
-      {score === questions.length ? (
-        <MobileContainer>
-          <MainContainer>
-            <HeaderContainer>
-              <PageName>Quiz Result</PageName>
-              <Score>
-                {score}/{questions.length}
-              </Score>
-              <h1>Congratulations!</h1>
-              <p>As a reward for winning get your favorite drink </p>
-            </HeaderContainer>
-            <RewardsContainer>
-              <WhiskyIcon />
-              <BeerIcon />
-              <TequilaIcon />
-              <RumIcon />
-              <WineIcon />
-              <VodkaIcon />
-              <MartiniIcon />
-            </RewardsContainer>
-            <ButtonContainer>
-              <NavLink to="/quiz-property">
-                <Button primary>TAKE NEW QUIZ</Button>
-              </NavLink>
-            </ButtonContainer>
-          </MainContainer>
-        </MobileContainer>
-      ) : (
-        <MobileContainer>
-          <MainContainer>
-            <HeaderContainer>
-              <PageName>Quiz Result</PageName>
-              <Score>
-                {score}/{questions.length}
-              </Score>
-              <h1>Not so bad!</h1>
-              <p>
-                Try again and win your drink But here is a prize for your
-                participation{" "}
-              </p>
-            </HeaderContainer>
-            <CocktailContainer>
-              <CocktailIcon />
-            </CocktailContainer>
-            <ButtonContainer>
-              <NavLink to="/quiz-property">
-                <Button primary>TAKE NEW QUIZ</Button>
-              </NavLink>
-            </ButtonContainer>
-          </MainContainer>
-        </MobileContainer>
-      )}
+    {SelectedPrize ? <Prize
+     WhiskyIcon={<WhiskyIcon/>}
+     BeerIcon={<BeerIcon/>}
+     TequilaIcon={<TequilaIcon/>}
+     RumIcon={<RumIcon/>}
+     WineIcon={<WineIcon/>}
+     VodkaIcon={<VodkaIcon/>}
+     MartiniIcon={<MartiniIcon/>}
+     CocktailIcon={<CocktailIcon/>}
+     /> :
+    <>
+    {score === questions.length ? (
+      <MobileContainer>
+        <MainContainer>
+          <HeaderContainer>
+            <PageName>Quiz Result</PageName>
+            <Score>
+              {score}/{questions.length}
+            </Score>
+            <h1>Congratulations!</h1>
+            <p>As a reward for winning get your favorite drink </p>
+          </HeaderContainer>
+          <RewardsContainer>
+            <WhiskyIcon onClick={handleSelectedPrize}/>
+            <BeerIcon onClick={handleSelectedPrize}/>
+            <TequilaIcon onClick={handleSelectedPrize}/>
+            <RumIcon onClick={handleSelectedPrize}/>
+            <WineIcon onClick={handleSelectedPrize}/>
+            <VodkaIcon onClick={handleSelectedPrize}/>
+            <MartiniIcon onClick={handleSelectedPrize}/>
+          </RewardsContainer>
+          <ButtonContainer>
+            <NavLink to="/quiz-property">
+              <Button primary>TAKE NEW QUIZ</Button>
+            </NavLink>
+          </ButtonContainer>
+        </MainContainer>
+      </MobileContainer>
+    ) : (
+      <MobileContainer>
+        <MainContainer>
+          <HeaderContainer>
+            <PageName>Quiz Result</PageName>
+            <Score>
+              {score}/{questions.length}
+            </Score>
+            <h1>Not so bad!</h1>
+            <p>
+              Try again and win your drink But here is a prize for your
+              participation{" "}
+            </p>
+          </HeaderContainer>
+          <CocktailContainer>
+            <CocktailIcon onClick={handleSelectedPrize}/>
+          </CocktailContainer>
+          <ButtonContainer>
+            <NavLink to="/quiz-property">
+              <Button primary>TAKE NEW QUIZ</Button>
+            </NavLink>
+          </ButtonContainer>
+        </MainContainer>
+      </MobileContainer>
+    )}
+  </>
+    
+    }
+    
+    
     </>
   );
 };
