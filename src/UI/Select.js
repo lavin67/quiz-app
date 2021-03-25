@@ -26,7 +26,7 @@ export const Select = styled.select`
 
   @media ${devices.laptopM} {
     max-width: ${sizes.laptopM};
-    width: 25%;
+    width: 100%;
     font-size: 14px;
     
   }
