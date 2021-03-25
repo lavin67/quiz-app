@@ -5,6 +5,9 @@ import { Button } from "../../../UI/Button";
 import { Input } from "../../../UI/Input";
 import { NavLink, useLocation } from "react-router-dom";
 import Result from "../Result/Result";
+
+import * as he from "he";
+
 import {
   LuckIcon,
   Container,
@@ -111,7 +114,9 @@ const Questions = () => {
                 </Container>
               </HeaderContainer>
 
-              <TheQuestion>{questions[currentQuestion].question}</TheQuestion>
+              <TheQuestion>
+                {he.decode(questions[currentQuestion].question)}
+              </TheQuestion>
               {type === "multiple" ? (
                 <div>
                   <OptionsContainer>
