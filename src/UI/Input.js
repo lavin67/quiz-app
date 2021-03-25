@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { sizes, devices } from "../Devices/Devices";
 
 export const Input = styled.input`
   height: 38px;
@@ -21,5 +22,13 @@ export const Input = styled.input`
   &:focus {
     border: ${(props) => props.theme.colors.border};
     background-color: ${(props) => props.theme.colors.inputColor};
+  }
+
+  
+  @media ${devices.laptopM} {
+    max-width: ${sizes.laptopM};
+    width: 25%;
+    font-size: 14px;
+
   }
 `;
