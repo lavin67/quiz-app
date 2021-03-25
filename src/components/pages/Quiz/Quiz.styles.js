@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { ReactComponent as Luck } from "../../../Icons/Luck.svg";
 import { Button } from "../../../UI/Button";
 import { NavLink } from "react-router-dom";
+import { sizes, devices } from "../../../Devices/Devices";
 
 export const HeaderContainer = styled.div`
   display: flex;
@@ -35,6 +36,10 @@ export const CategoryName = styled.p`
 export const TheQuestion = styled.p`
   color: ${(props) => props.theme.colors.textColor};
   font-size: 20px;
+  @media ${devices.laptopM} {
+    max-width: ${sizes.laptopM};
+    align-self: center;
+  }
 `;
 
 export const OptionsContainer = styled.div`
@@ -44,8 +49,11 @@ export const OptionsContainer = styled.div`
   align-items: center;
   margin: 8px;
   ${Button} {
-    margin: 8px;
-    width: 100%;
+    @media ${devices.laptopM} {
+      max-width: ${sizes.laptopM};
+
+      font-size: 16px;
+    }
   }
 `;
 
@@ -59,5 +67,9 @@ export const FooterContainer = styled.div`
   a {
     color: ${(props) => props.theme.colors.secondaryTextColor};
     text-decoration: none;
+    @media ${devices.laptopM} {
+      max-width: ${sizes.laptopM};
+      font-size: 18px;
+    }
   }
 `;
