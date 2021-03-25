@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { sizes, devices } from "../Devices/Devices";
+
 
 export const Select = styled.select`
   height: 38px;
@@ -20,5 +22,12 @@ export const Select = styled.select`
 
   &:focus {
     outline-color: ${(props) => props.theme.colors.border};
+  }
+
+  @media ${devices.laptopM} {
+    max-width: ${sizes.laptopM};
+    width: 25%;
+    font-size: 14px;
+    
   }
 `;
