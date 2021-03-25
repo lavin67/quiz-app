@@ -10,6 +10,7 @@ import { ReactComponent as Rum } from "../../../Icons/rum.svg";
 import { ReactComponent as Tequila } from "../../../Icons/tequila.svg";
 import { ReactComponent as Vodka } from "../../../Icons/vodka.svg";
 import { ReactComponent as Cocktail } from "../../../Icons/cocktail.svg";
+import { sizes, devices } from "../../../Devices/Devices";
 
 export const MainContainer = styled.div`
   display: flex;
@@ -27,11 +28,19 @@ export const HeaderContainer = styled.div`
     color: ${(props) => props.theme.colors.textColor};
     font-size: 24px;
     font-weight: normal;
+    @media ${devices.laptopM} {
+      max-width: ${sizes.laptopM};
+      font-size: 32px;
+    }
   }
   p {
     color: ${(props) => props.theme.colors.textColor};
     font-size: 18px;
     text-align: center;
+    @media ${devices.laptopM} {
+      max-width: ${sizes.laptopM};
+      font-size: 24px;
+    }
   }
 `;
 
@@ -39,11 +48,19 @@ export const PageName = styled.div`
   color: ${(props) => props.theme.colors.secondaryTextColor};
   font-size: 16px;
   margin: 24px;
+  @media ${devices.laptopM} {
+    max-width: ${sizes.laptopM};
+    font-size: 26px;
+  }
 `;
 
 export const Score = styled.div`
   color: ${(props) => props.theme.colors.textColor};
   font-size: 24px;
+  @media ${devices.laptopM} {
+    max-width: ${sizes.laptopM};
+    font-size: 32px;
+  }
 `;
 
 export const RewardsContainer = styled.div`
@@ -61,46 +78,92 @@ export const RewardsContainer = styled.div`
   justify-content: center;
   justify-items: center;
   align-content: center;
+  @media ${devices.laptopM} {
+    max-width: ${sizes.laptopM};
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 4rem;
+  }
 `;
 
 export const WhiskyIcon = styled(Whisky)`
   height: 64px;
   width: 64px;
+  @media ${devices.laptopM} {
+    max-width: ${sizes.laptopM};
+    height:112px;
+    width:112px;
+    margin: 0 8px;
+  }
 `;
 
 export const WineIcon = styled(Wine)`
   height: 64px;
   width: 64px;
+  @media ${devices.laptopM} {
+    max-width: ${sizes.laptopM};
+    height:112px;
+    width:112px;
+    margin: 0 8px;
+  }
 `;
 
 export const BeerIcon = styled(Beer)`
   height: 64px;
   width: 64px;
+  @media ${devices.laptopM} {
+    max-width: ${sizes.laptopM};
+    height:112px;
+    width:112px;
+    margin: 0 8px;
+  }
 `;
 export const MartiniIcon = styled(Martini)`
   height: 64px;
   width: 64px;
   grid-column: 2/ 3;
   grid-row: 3 / 3;
+  @media ${devices.laptopM} {
+    max-width: ${sizes.laptopM};
+    height:112px;
+    width:112px;
+    margin: 0 8px;
+  }
 `;
 
 export const RumIcon = styled(Rum)`
   height: 64px;
   width: 64px;
+  @media ${devices.laptopM} {
+    max-width: ${sizes.laptopM};
+    height:112px;
+    width:112px;
+    margin: 0 8px;
+  }
 `;
 
 export const VodkaIcon = styled(Vodka)`
   height: 64px;
   width: 64px;
+  @media ${devices.laptopM} {
+    max-width: ${sizes.laptopM};
+    height:112px;
+    width:112px;
+    margin: 0 8px;
+  }
 `;
 
 export const TequilaIcon = styled(Tequila)`
   height: 64px;
   width: 64px;
-`;
-export const CocktailIcon = styled(Cocktail)`
-  height: 8rem;
-  width: 8rem;
+  @media ${devices.laptopM} {
+    max-width: ${sizes.laptopM};
+    height:112px;
+    width:112px;
+    margin: 0 8px;
+  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -109,4 +172,14 @@ export const ButtonContainer = styled.div`
 
 export const CocktailContainer = styled.div`
   margin: 3rem;
+`;
+
+export const CocktailIcon = styled(Cocktail)`
+  height: 8rem;
+  width: 8rem;
+  @media ${devices.laptopM} {
+    max-width: ${sizes.laptopM};
+    height: 10rem;
+    width: 10rem;
+  }
 `;
