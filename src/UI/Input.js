@@ -27,7 +27,7 @@ export const Input = styled.input`
   
   @media ${devices.laptopM} {
     max-width: ${sizes.laptopM};
-    width: 25%;
+    width: 100%;
     font-size: 14px;
 
   }
