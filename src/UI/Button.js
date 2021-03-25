@@ -27,6 +27,15 @@ export const Button = styled.button`
         background-color: #5a2290;
         border: none;
       }
+      @media ${devices.laptopM} {
+        max-width: ${sizes.laptopM};
+        height: 3rem;
+        width: 11rem;
+        border-radius: 5px;
+        border: none;
+        font-size: 16px;
+        outline: none;
+      }
     `}
 
   ${(props) =>
@@ -48,7 +57,12 @@ export const Button = styled.button`
         background-color: ${(props) => props.theme.colors.inputColor};
       } */
       outline: none;
-     
+      @media ${devices.laptopM} {
+        max-width: ${sizes.laptopM};
+        width: 25%;
+        font-size: 14px;
+        margin: 8px;
+      }
     `}
     ${(props) =>
     props.isSelected &&
