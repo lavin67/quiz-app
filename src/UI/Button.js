@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { sizes, devices } from "../Devices/Devices";
 
 export const Button = styled.button`
   height: 2.5rem;
@@ -47,6 +48,7 @@ export const Button = styled.button`
         background-color: ${(props) => props.theme.colors.inputColor};
       } */
       outline: none;
+     
     `}
     ${(props) =>
     props.isSelected &&
@@ -57,5 +59,4 @@ export const Button = styled.button`
 
       outline: none;
     `}
-    
 `;
