@@ -8,6 +8,12 @@ import {
   QuizPropsContainer,
   StyledPropertyLabel,
   ButtonContainer,
+  QuizPropContForLaptop,
+  amountAndCatCont,
+  TypeAndDifCont,
+  NameInput,
+  StyledButton,
+  EachPropContainer
 } from "./QuizProperty.styles";
 import { Button } from "../../../UI/Button";
 import { Input } from "../../../UI/Input";
@@ -83,11 +89,14 @@ const QuizPropertyPage = () => {
 
         {/* name section */}
         <StyledNameLabel>What's your name?</StyledNameLabel>
-        <Input onChange={onNameChange} value={name} />
+        <NameInput onChange={onNameChange} value={name} />
       </Container>
 
       {/* number of questions */}
       <QuizPropsContainer>
+        <QuizPropContForLaptop>
+          <amountAndCatCont>
+            
         <StyledPropertyLabel>Number of questions:</StyledPropertyLabel>
         <Input onChange={onAmountChange} value={amount} />
 
@@ -111,7 +120,8 @@ const QuizPropertyPage = () => {
               );
             })}
         </Select>
-
+        </amountAndCatCont>
+        <TypeAndDifCont>
         {/* multiple, boolean */}
         <StyledPropertyLabel>Select type:</StyledPropertyLabel>
         <Select name="type" onChange={onTypeChange} value={type}>
@@ -138,6 +148,8 @@ const QuizPropertyPage = () => {
           <option value="medium">Medium</option>
           <option value="hard">Hard</option>
         </Select>
+        </TypeAndDifCont>
+        </QuizPropContForLaptop>
       </QuizPropsContainer>
       <ButtonContainer>
         {/* <div style={{ color: "white" }}>
@@ -151,9 +163,9 @@ const QuizPropertyPage = () => {
             " : " +
             name}
         </div> */}
-        <Button onClick={onClick} primary style={{ marginTop: "1rem" }}>
+        <StyledButton onClick={onClick} primary >
           START
-        </Button>
+        </StyledButton>
       </ButtonContainer>
     </MobileContainer>
   );
