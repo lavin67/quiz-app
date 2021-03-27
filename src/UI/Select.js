@@ -28,6 +28,6 @@ export const Select = styled.select`
     max-width: ${sizes.laptopM};
     width: 100%;
     font-size: 14px;
-    
+    margin-bottom: 24px;
   }
 `;
