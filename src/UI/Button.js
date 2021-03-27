@@ -13,6 +13,7 @@ export const Button = styled.button`
     opacity: 0.5;
     cursor: not-allowed;
   }
+  
   ${(props) =>
     props.primary &&
     css`
@@ -27,6 +28,7 @@ export const Button = styled.button`
         background-color: #5a2290;
         border: none;
       }
+      
       @media ${devices.laptopM} {
         max-width: ${sizes.laptopM};
         height: 3rem;
@@ -63,6 +65,8 @@ export const Button = styled.button`
         font-size: 14px;
         margin: 8px;
       }
+      margin: 8px;
+      width: 100%;
     `}
     ${(props) =>
     props.isSelected &&
