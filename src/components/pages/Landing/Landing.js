@@ -8,7 +8,6 @@ import {
   MainContainerForLaptop,
   MainContainer,
   StyledButton,
-  PrimaryContainer,
 } from "./Landing.styles";
 //import { Button } from "../../../UI/Button";
 import { NavLink } from "react-router-dom";
@@ -29,11 +28,10 @@ const LandingPage = () => {
             <StyledButton primary>START THE QUIZ</StyledButton>
           </NavLink>
         </MainContainer>
-        <PrimaryContainer>
-          <LearningIconContainer>
-            <LearningIcon />
-          </LearningIconContainer>
-        </PrimaryContainer>
+
+        <LearningIconContainer>
+          <LearningIcon />
+        </LearningIconContainer>
       </MainContainerForLaptop>
     </MobileContainer>
   );
