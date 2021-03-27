@@ -29,6 +29,6 @@ export const Input = styled.input`
     max-width: ${sizes.laptopM};
     width: 100%;
     font-size: 14px;
-
+margin-bottom: 24px;
   }
 `;
