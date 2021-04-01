@@ -93,8 +93,8 @@ export const WhiskyIcon = styled(Whisky)`
   width: 64px;
   @media ${devices.laptopM} {
     max-width: ${sizes.laptopM};
-    height:112px;
-    width:112px;
+    height: 112px;
+    width: 112px;
     margin: 0 8px;
   }
 `;
@@ -104,8 +104,8 @@ export const WineIcon = styled(Wine)`
   width: 64px;
   @media ${devices.laptopM} {
     max-width: ${sizes.laptopM};
-    height:112px;
-    width:112px;
+    height: 112px;
+    width: 112px;
     margin: 0 8px;
   }
 `;
@@ -115,8 +115,8 @@ export const BeerIcon = styled(Beer)`
   width: 64px;
   @media ${devices.laptopM} {
     max-width: ${sizes.laptopM};
-    height:112px;
-    width:112px;
+    height: 112px;
+    width: 112px;
     margin: 0 8px;
   }
 `;
@@ -127,8 +127,8 @@ export const MartiniIcon = styled(Martini)`
   grid-row: 3 / 3;
   @media ${devices.laptopM} {
     max-width: ${sizes.laptopM};
-    height:112px;
-    width:112px;
+    height: 112px;
+    width: 112px;
     margin: 0 8px;
   }
 `;
@@ -138,8 +138,8 @@ export const RumIcon = styled(Rum)`
   width: 64px;
   @media ${devices.laptopM} {
     max-width: ${sizes.laptopM};
-    height:112px;
-    width:112px;
+    height: 112px;
+    width: 112px;
     margin: 0 8px;
   }
 `;
@@ -149,8 +149,8 @@ export const VodkaIcon = styled(Vodka)`
   width: 64px;
   @media ${devices.laptopM} {
     max-width: ${sizes.laptopM};
-    height:112px;
-    width:112px;
+    height: 112px;
+    width: 112px;
     margin: 0 8px;
   }
 `;
@@ -160,8 +160,8 @@ export const TequilaIcon = styled(Tequila)`
   width: 64px;
   @media ${devices.laptopM} {
     max-width: ${sizes.laptopM};
-    height:112px;
-    width:112px;
+    height: 112px;
+    width: 112px;
     margin: 0 8px;
   }
 `;
