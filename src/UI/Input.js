@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { sizes, devices } from "../Devices/Devices";
 
 export const Input = styled.input`
@@ -23,7 +23,16 @@ export const Input = styled.input`
     border: ${(props) => props.theme.colors.border};
     background-color: ${(props) => props.theme.colors.inputColor};
   }
+  
+  ${(props) =>
+    props.isSelected &&
+    css`
+      color: ${(props) => props.theme.colors.textColor};
+      background-color: ${(props) => props.theme.colors.inputColor};
+      //border: ${(props) => props.theme.colors.border};
 
+      outline: none;
+    `}
   
   @media ${devices.laptopM} {
     max-width: ${sizes.laptopM};
