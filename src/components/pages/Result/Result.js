@@ -22,27 +22,96 @@ import {
   CocktailContainer,
 } from "./Result.styles";
 import Prize from "../Prize/Prize";
+import { useMediaQuery } from "react-responsive";
+import { sizes, devices } from "../../../Devices/Devices";
 
 const Result = ({ questions, score }) => {
-  const [SelectedPrize, setSelectedPrize] = useState(false);
+  const [prizeRecieved, setPrizeRecieved] = useState(false);
+  const [selectedPrize, setSelectedPrize] = useState({});
 
-  const handleSelectedPrize = () => {
-    setSelectedPrize(true);
+  const handleSelectedPrize = (prize) => {
+    setPrizeRecieved(true);
+    setSelectedPrize(prize);
+    console.log(selectedPrize);
   };
 
+  const isLaptop = useMediaQuery({
+    query: devices.laptopM,
+  });
+
+  const losingPrize = [
+    {
+      key: "cocktail",
+      icon: <CocktailIcon />,
+    },
+  ];
+
+  const winningPrizesLaptop = [
+    {
+      key: "whiskey",
+      icon: <WhiskyIcon />,
+    },
+    {
+      key: "beer",
+      icon: <BeerIcon />,
+    },
+    {
+      key: "tequila",
+      icon: <TequilaIcon />,
+    },
+    {
+      key: "martini",
+      icon: <MartiniIcon />,
+    },
+    {
+      key: "rum",
+      icon: <RumIcon />,
+    },
+    {
+      key: "wine",
+      icon: <WineIcon />,
+    },
+    {
+      key: "vodka",
+      icon: <VodkaIcon />,
+    },
+  ];
+
+  const winningPrizesMobile = [
+    {
+      key: "whiskey",
+      icon: <WhiskyIcon />,
+    },
+    {
+      key: "beer",
+      icon: <BeerIcon />,
+    },
+    {
+      key: "tequila",
+      icon: <TequilaIcon />,
+    },
+    {
+      key: "rum",
+      icon: <RumIcon />,
+    },
+    {
+      key: "wine",
+      icon: <WineIcon />,
+    },
+    {
+      key: "vodka",
+      icon: <VodkaIcon />,
+    },
+    {},
+    {
+      key: "martini",
+      icon: <MartiniIcon />,
+    },
+  ];
   return (
     <>
-      {SelectedPrize ? (
-        <Prize
-          WhiskyIcon={<WhiskyIcon />}
-          BeerIcon={<BeerIcon />}
-          TequilaIcon={<TequilaIcon />}
-          RumIcon={<RumIcon />}
-          WineIcon={<WineIcon />}
-          VodkaIcon={<VodkaIcon />}
-          MartiniIcon={<MartiniIcon />}
-          CocktailIcon={<CocktailIcon />}
-        />
+      {prizeRecieved ? (
+        <Prize selectedPrize={selectedPrize} />
       ) : (
         <>
           {score === questions.length ? (
@@ -57,14 +126,31 @@ const Result = ({ questions, score }) => {
                   <p>As a reward for winning get your favorite drink </p>
                 </HeaderContainer>
                 <RewardsContainer>
-                  <WhiskyIcon onClick={handleSelectedPrize} />
-                  <BeerIcon onClick={handleSelectedPrize} />
-                  <TequilaIcon onClick={handleSelectedPrize} />
-                  <MartiniIcon onClick={handleSelectedPrize} />
-                  <RumIcon onClick={handleSelectedPrize} />
-                  <WineIcon onClick={handleSelectedPrize} />
-                  <VodkaIcon onClick={handleSelectedPrize} />
+                  {isLaptop
+                    ? winningPrizesLaptop.map((prize) => {
+                        return (
+                          <div
+                            onClick={() => handleSelectedPrize(prize)}
+                            secondary
+                            isSelected={selectedPrize.key === prize.key}
+                          >
+                            {prize.icon}{" "}
+                          </div>
+                        );
+                      })
+                    : winningPrizesMobile.map((prize) => {
+                        return (
+                          <div
+                            onClick={() => handleSelectedPrize(prize)}
+                            secondary
+                            isSelected={selectedPrize.key === prize.key}
+                          >
+                            {prize.icon}{" "}
+                          </div>
+                        );
+                      })}
                 </RewardsContainer>
+
                 <ButtonContainer>
                   <NavLink to="/quiz-property">
                     <Button primary>TAKE NEW QUIZ</Button>
@@ -87,7 +173,17 @@ const Result = ({ questions, score }) => {
                   </p>
                 </HeaderContainer>
                 <CocktailContainer>
-                  <CocktailIcon onClick={handleSelectedPrize} />
+                  {losingPrize.map((prize) => {
+                    return (
+                      <div
+                        onClick={() => handleSelectedPrize(prize)}
+                        secondary
+                        isSelected={selectedPrize.key === prize.key}
+                      >
+                        {prize.icon}{" "}
+                      </div>
+                    );
+                  })}
                 </CocktailContainer>
                 <ButtonContainer>
                   <NavLink to="/quiz-property">
