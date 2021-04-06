@@ -96,12 +96,14 @@ const Questions = () => {
 
 
   const onQuestionAmountChange = () => {
-    api
-      .get(`https://opentdb.com/api_count.php?category=${selectedCategory}`)
-      .then((e) => {
-        console.log(e.data.category_question_count);
-        // setAmount(event.data);
-      });
+//     api
+//       .get(`https://opentdb.com/api_count.php?category=${selectedCategory}`)
+//       .then((e) => {
+//         console.log(e.data.category_question_count);
+//         if(amount > e.data.category_question_count){
+// console.log("u did wrong, too many question")
+//         }
+//       });
   };
 
   return (
@@ -143,6 +145,7 @@ const Questions = () => {
                         </Button>
                       );
                     })}
+                    <Button onClick={() => onQuestionAmountChange()}>hi there</Button>
                   </OptionsContainer>
                   <FooterContainer>
                     {console.log(selectedAnswer)}
