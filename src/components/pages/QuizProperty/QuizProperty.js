@@ -37,14 +37,7 @@ const QuizPropertyPage = () => {
 
   const history = useHistory();
 
-  const onQuestionAmountChange = () => {
-    api
-      .get(`https://opentdb.com/api_count.php?category=${selectedCategory}`)
-      .then((e) => {
-        console.log(e.data.category_question_count);
-        // setAmount(event.data);
-      });
-  };
+ 
 
   useEffect(() => {
     api.get("https://opentdb.com/api_category.php").then((res) => {
@@ -87,7 +80,7 @@ const QuizPropertyPage = () => {
     amount.length > 0
   );
 
-  console.log(isDisabled);
+  //console.log(isDisabled);
   return (
     <MobileContainer>
       <Container>
