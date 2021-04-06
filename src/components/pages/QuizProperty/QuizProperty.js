@@ -37,7 +37,7 @@ const QuizPropertyPage = () => {
 
   const history = useHistory();
 
-  const onSthChange = () => {
+  const onQuestionAmountChange = () => {
     api
       .get(`https://opentdb.com/api_count.php?category=${selectedCategory}`)
       .then((e) => {
