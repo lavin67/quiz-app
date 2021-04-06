@@ -78,6 +78,7 @@ export const RewardsContainer = styled.div`
   justify-content: center;
   justify-items: center;
   align-content: center;
+  
   @media ${devices.laptopM} {
     max-width: ${sizes.laptopM};
     display: flex;
