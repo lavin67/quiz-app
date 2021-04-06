@@ -73,7 +73,7 @@ const QuizPropertyPage = () => {
     setDifficulty(e.target.value);
   };
 
-  const onClick = () => {
+  const onGenerateTheQuiz = () => {
     history.push(
       `/quiz?amount=${amount}&category=${selectedCategory}&difficulty=${difficulty}&type=${type}`
     );
@@ -170,7 +170,7 @@ const QuizPropertyPage = () => {
             " : " +
             name}
         </div> */}
-        <StyledButton onClick={onClick} primary disabled={isDisabled}>
+        <StyledButton onClick={onGenerateTheQuiz} primary disabled={isDisabled}>
           START
         </StyledButton>
       </ButtonContainer>
