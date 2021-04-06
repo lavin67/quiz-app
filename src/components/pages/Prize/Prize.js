@@ -5,9 +5,7 @@ import { Button } from "../../../UI/Button";
 import { Input } from "../../../UI/Input";
 import { NavLink, useLocation } from "react-router-dom";
 import { MainContainer, Description, PrizeContainer } from "./Prize.styles";
-
-const Prize = ({
-  CocktailIcon,
+import {
   WhiskyIcon,
   BeerIcon,
   TequilaIcon,
@@ -15,19 +13,39 @@ const Prize = ({
   WineIcon,
   VodkaIcon,
   MartiniIcon,
-}) => {
+  CocktailIcon,
+} from "../Result/Result.styles";
+
+const Prize = ({ selectedPrize }) => {
+  const displayPrize = (selectedPrize) => {
+    switch (selectedPrize) {
+      case "whiskey":
+        return WhiskyIcon;
+      case "beer":
+        return BeerIcon;
+      case "tequila":
+        return TequilaIcon;
+      case "rum":
+        return RumIcon;
+      case "wine":
+        return WineIcon;
+      case "vodka":
+        return VodkaIcon;
+      case "martini":
+        return MartiniIcon;
+      case "cocktail":
+        return CocktailIcon;
+    }
+  };
+
   return (
     <MobileContainer>
       <MainContainer>
-        <Description>Enjoy</Description>
-        <PrizeContainer>{CocktailIcon}</PrizeContainer>
-        <PrizeContainer>{WhiskyIcon}</PrizeContainer>
-        <PrizeContainer>{BeerIcon}</PrizeContainer>
-        <PrizeContainer>{TequilaIcon}</PrizeContainer>
-        <PrizeContainer>{RumIcon}</PrizeContainer>
-        <PrizeContainer>{WineIcon}</PrizeContainer>
-        <PrizeContainer>{VodkaIcon}</PrizeContainer>
-        <PrizeContainer>{MartiniIcon}</PrizeContainer>
+        <Description>Enjoy your {selectedPrize.key} :)</Description>
+        <PrizeContainer>{selectedPrize.icon}</PrizeContainer>
+        <NavLink to="/quiz-property">
+          <Button primary>TAKE NEW QUIZ</Button>
+        </NavLink>
       </MainContainer>
     </MobileContainer>
   );
