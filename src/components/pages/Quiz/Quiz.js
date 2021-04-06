@@ -94,6 +94,16 @@ const Questions = () => {
       });
   }, []);
 
+
+  const onQuestionAmountChange = () => {
+    api
+      .get(`https://opentdb.com/api_count.php?category=${selectedCategory}`)
+      .then((e) => {
+        console.log(e.data.category_question_count);
+        // setAmount(event.data);
+      });
+  };
+
   return (
     <>
       {result ? (
