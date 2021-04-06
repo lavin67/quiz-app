@@ -13,7 +13,7 @@ import {
   TypeAndDifCont,
   NameInput,
   StyledButton,
-  EachPropContainer
+  EachPropContainer,
 } from "./QuizProperty.styles";
 import { Button } from "../../../UI/Button";
 import { Input } from "../../../UI/Input";
@@ -23,12 +23,11 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 const api = axios.create({
-  baseURL:
-    "https://opentdb.com/api.php?amount=10&category=27&difficulty=medium&type=multiple",
+  baseURL: "https://opentdb.com/api.php",
 });
 
 const QuizPropertyPage = () => {
-  const [amount, setAmount] = useState(10);
+  const [amount, setAmount] = useState("");
   const [name, setName] = useState("");
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -80,6 +79,15 @@ const QuizPropertyPage = () => {
     );
   };
 
+  const isDisabled = !(
+    selectedCategory.length > 0 &&
+    type.length > 0 &&
+    difficulty.length > 0 &&
+    name.length > 0 &&
+    amount.length > 0
+  );
+
+  console.log(isDisabled);
   return (
     <MobileContainer>
       <Container>
@@ -96,59 +104,58 @@ const QuizPropertyPage = () => {
       <QuizPropsContainer>
         <QuizPropContForLaptop>
           <amountAndCatCont>
-            
-        <StyledPropertyLabel>Number of questions:</StyledPropertyLabel>
-        <Input onChange={onAmountChange} value={amount} />
+            <StyledPropertyLabel>Number of questions:</StyledPropertyLabel>
+            <Input onChange={onAmountChange} value={amount} />
 
-        {/* select category */}
-        <StyledPropertyLabel>Select category:</StyledPropertyLabel>
-        <Select
-          name="category"
-          onChange={(e) => setSelectedCategory(e.target.value)}
-          defaultValue="0"
-        >
-          <option value="0" defaultValue="0" disabled hidden>
-            Choose here
-          </option>
+            {/* select category */}
+            <StyledPropertyLabel>Select category:</StyledPropertyLabel>
+            <Select
+              name="category"
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              defaultValue="0"
+            >
+              <option value="0" defaultValue="0" disabled hidden>
+                Choose here
+              </option>
 
-          {categories.length > 0 &&
-            categories.map((category) => {
-              return (
-                <option value={category.id} key={category.id}>
-                  {category.name}
-                </option>
-              );
-            })}
-        </Select>
-        </amountAndCatCont>
-        <TypeAndDifCont>
-        {/* multiple, boolean */}
-        <StyledPropertyLabel>Select type:</StyledPropertyLabel>
-        <Select name="type" onChange={onTypeChange} value={type}>
-          <option value="" defaultValue="" disabled hidden>
-            Choose here
-          </option>
-          {/* //question type */}
-          <option value="multiple">Multiple Choice Questions</option>
-          <option value="boolean">True/False</option>
-        </Select>
+              {categories.length > 0 &&
+                categories.map((category) => {
+                  return (
+                    <option value={category.id} key={category.id}>
+                      {category.name}
+                    </option>
+                  );
+                })}
+            </Select>
+          </amountAndCatCont>
+          <TypeAndDifCont>
+            {/* multiple, boolean */}
+            <StyledPropertyLabel>Select type:</StyledPropertyLabel>
+            <Select name="type" onChange={onTypeChange} value={type}>
+              <option value="" defaultValue="" disabled hidden>
+                Choose here
+              </option>
+              {/* //question type */}
+              <option value="multiple">Multiple Choice Questions</option>
+              <option value="boolean">True/False</option>
+            </Select>
 
-        {/* //difficulty */}
-        <StyledPropertyLabel>Select difficulty:</StyledPropertyLabel>
-        <Select
-          name="difficulty"
-          onChange={onDifficultyChange}
-          value={difficulty}
-        >
-          <option value="" defaultValue="" disabled hidden>
-            Choose here
-          </option>
+            {/* //difficulty */}
+            <StyledPropertyLabel>Select difficulty:</StyledPropertyLabel>
+            <Select
+              name="difficulty"
+              onChange={onDifficultyChange}
+              value={difficulty}
+            >
+              <option value="" defaultValue="" disabled hidden>
+                Choose here
+              </option>
 
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
-        </Select>
-        </TypeAndDifCont>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </Select>
+          </TypeAndDifCont>
         </QuizPropContForLaptop>
       </QuizPropsContainer>
       <ButtonContainer>
@@ -163,7 +170,7 @@ const QuizPropertyPage = () => {
             " : " +
             name}
         </div> */}
-        <StyledButton onClick={onClick} primary >
+        <StyledButton onClick={onClick} primary disabled={isDisabled}>
           START
         </StyledButton>
       </ButtonContainer>
