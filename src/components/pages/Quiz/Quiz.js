@@ -115,6 +115,7 @@ const Questions = () => {
               </HeaderContainer>
 
               <TheQuestion>
+              {console.log(questions[currentQuestion].correctAnswer) }
                 {he.decode(questions[currentQuestion].question)}
               </TheQuestion>
               {type === "multiple" ? (
