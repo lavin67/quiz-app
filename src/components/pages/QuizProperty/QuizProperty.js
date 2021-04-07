@@ -9,7 +9,7 @@ import {
   StyledPropertyLabel,
   ButtonContainer,
   QuizPropContForLaptop,
-  AmountAndCatCont,
+  CategoryAndTypeContainer,
   TypeAndDifCont,
   NameInput,
   StyledButton,
@@ -134,7 +134,7 @@ const QuizPropertyPage = () => {
 
       <QuizPropsContainer>
         <QuizPropContForLaptop>
-          <AmountAndCatCont>
+          <CategoryAndTypeContainer>
             {/* select category */}
             <StyledPropertyLabel>Select category:</StyledPropertyLabel>
             <Select
@@ -165,7 +165,7 @@ const QuizPropertyPage = () => {
               <option value="multiple">Multiple Choice Questions</option>
               <option value="boolean">True/False</option>
             </Select>
-          </AmountAndCatCont>
+          </CategoryAndTypeContainer>
           <TypeAndDifCont>
            
 

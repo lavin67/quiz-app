@@ -65,7 +65,7 @@ export const QuizPropContForLaptop = styled.div`
   }
 `;
 
-export const AmountAndCatCont = styled.div`
+export const CategoryAndTypeContainer = styled.div`
   @media ${devices.laptopM} {
     max-width: ${sizes.laptopM};
     display: flex;
