@@ -42,7 +42,6 @@ const QuizPropertyPage = () => {
   useEffect(() => {
     if (questionsCount) {
       setIsCountAvailable(amount <= questionsCount.amount);
-    } else {
     }
   }, [amount, questionsCount]);
 
@@ -133,17 +132,9 @@ const QuizPropertyPage = () => {
         <NameInput onChange={onNameChange} value={name} />
       </Container>
 
-      {/* number of questions */}
       <QuizPropsContainer>
         <QuizPropContForLaptop>
           <AmountAndCatCont>
-            <StyledPropertyLabel>Number of questions:</StyledPropertyLabel>
-            <AmountInput
-              style={{ border: isCountAvailable === true ? "green" : "red" }}
-              onChange={onAmountChange}
-              value={amount}
-            />
-
             {/* select category */}
             <StyledPropertyLabel>Select category:</StyledPropertyLabel>
             <Select
@@ -164,20 +155,20 @@ const QuizPropertyPage = () => {
                   );
                 })}
             </Select>
-          </AmountAndCatCont>
-          <TypeAndDifCont>
-            {/* multiple, boolean */}
-            <StyledPropertyLabel>Select type:</StyledPropertyLabel>
+             {/* multiple, boolean */}
+             <StyledPropertyLabel>Select type:</StyledPropertyLabel>
             <Select name="type" onChange={onTypeChange} value={type}>
               <option value="" defaultValue="" disabled hidden>
                 Choose here
               </option>
-              {/* //question type */}
+              {/* difficulty */}
               <option value="multiple">Multiple Choice Questions</option>
               <option value="boolean">True/False</option>
             </Select>
+          </AmountAndCatCont>
+          <TypeAndDifCont>
+           
 
-            {/* //difficulty */}
             <StyledPropertyLabel>Select difficulty:</StyledPropertyLabel>
             <Select
               name="difficulty"
@@ -192,6 +183,16 @@ const QuizPropertyPage = () => {
               <option value="medium">Medium</option>
               <option value="hard">Hard</option>
             </Select>
+
+            {/* number of questions*/}
+            <StyledPropertyLabel>Number of questions:</StyledPropertyLabel>
+            <Input
+              isAvailable={isCountAvailable === true}
+              isUnavailabe={isCountAvailable === false}
+              placeholder="Choose a proper amount of questions"
+              onChange={onAmountChange}
+              value={amount}
+            />
           </TypeAndDifCont>
         </QuizPropContForLaptop>
       </QuizPropsContainer>
