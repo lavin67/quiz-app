@@ -6,6 +6,7 @@ const theme = {
     textColor: `#f3e6ff`,
     border: `1px solid #8030cd`,
     secondaryTextColor: `#615C66`,
+    isUnavailable: "#D50000",
   },
 };
 
