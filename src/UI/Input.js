@@ -33,6 +33,16 @@ export const Input = styled.input`
 
       outline: none;
     `}
+
+    ${(props) =>
+    props.isUnavailabe &&
+    css`
+      color: ${(props) => props.theme.colors.textColor};
+      background-color: ${(props) => props.theme.colors.inputColor};
+      //border: ${(props) => props.theme.colors.border};
+
+      outline: none;
+    `}
   
   @media ${devices.laptopM} {
     max-width: ${sizes.laptopM};
