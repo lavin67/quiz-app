@@ -23,7 +23,7 @@ export const Input = styled.input`
     border: ${(props) => props.theme.colors.border};
     background-color: ${(props) => props.theme.colors.inputColor};
   }
-  
+
   ${(props) =>
     props.isSelected &&
     css`
@@ -34,13 +34,37 @@ export const Input = styled.input`
       outline: none;
     `}
 
-    ${(props) =>
+  ${(props) =>
     props.isUnavailabe &&
     css`
-      color: ${(props) => props.theme.colors.textColor};
-      background-color: ${(props) => props.theme.colors.inputColor};
-      //border: ${(props) => props.theme.colors.border};
+      &:active {
+        //border: ${(props) => props.theme.colors.wrongRed};
+        border: none;
+      }
+     
+      &:focus {
+        border: ${(props) => props.theme.colors.wrongRed};
+       // border: none;
 
+      }
+
+      border:none;
+      outline: none;
+    `}
+    ${(props) =>
+    props.isAvailabe &&
+    css`
+    
+  &:active {
+    border: ${(props) => props.theme.colors.border};
+    
+  }
+ 
+  &:focus {
+    border: ${(props) => props.theme.colors.border};
+    
+  }
+      border: none;
       outline: none;
     `}
   
@@ -48,6 +72,6 @@ export const Input = styled.input`
     max-width: ${sizes.laptopM};
     width: 100%;
     font-size: 14px;
-margin-bottom: 24px;
+    margin-bottom: 24px;
   }
 `;
