@@ -46,6 +46,7 @@ const Questions = () => {
   const amount = query.amount;
   const difficulty = query.difficulty;
   const type = query.type;
+  const name = query.name;
 
   const handleSelectedAnswer = (answer) => {
     setSelectedAnswer(answer);
@@ -100,7 +101,7 @@ const Questions = () => {
   return (
     <>
       {result ? (
-        <Result questions={questions} score={score} />
+        <Result questions={questions} score={score} name={name}/>
       ) : (
         <>
           {questions.length > 0 && (
