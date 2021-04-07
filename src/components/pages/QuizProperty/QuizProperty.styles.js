@@ -42,7 +42,7 @@ export const StyledPropertyLabel = styled.p`
   @media ${devices.laptopM} {
     max-width: ${sizes.laptopM};
     font-size: 1.3rem;
-    align-self: flex-start
+    align-self: flex-start;
   }
 `;
 
@@ -65,15 +65,14 @@ export const QuizPropContForLaptop = styled.div`
   }
 `;
 
-export const amountAndCatCont = styled.div`
+export const AmountAndCatCont = styled.div`
   @media ${devices.laptopM} {
     max-width: ${sizes.laptopM};
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    
+    width: 20%;
   }
 `;
 
@@ -96,7 +95,7 @@ export const NameInput = styled(Input)`
 `;
 
 export const StyledButton = styled(Button)`
-margin-top: -1rem;
+  margin-top: -1rem;
   @media ${devices.laptopM} {
     max-width: ${sizes.laptopM};
     height: 3rem;
@@ -109,7 +108,8 @@ margin-top: -1rem;
 `;
 
 export const EachPropContainer = styled.div`
-@media ${devices.laptopM} {
+  @media ${devices.laptopM} {
     max-width: ${sizes.laptopM};
-   
-  }`;
+  }
+`;
+
