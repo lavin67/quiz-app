@@ -25,7 +25,7 @@ import Prize from "../Prize/Prize";
 import { useMediaQuery } from "react-responsive";
 import { sizes, devices } from "../../../Devices/Devices";
 
-const Result = ({ questions, score }) => {
+const Result = ({ questions, score, name }) => {
   const [prizeRecieved, setPrizeRecieved] = useState(false);
   const [selectedPrize, setSelectedPrize] = useState({});
 
@@ -122,7 +122,7 @@ const Result = ({ questions, score }) => {
                   <Score>
                     {score}/{questions.length}
                   </Score>
-                  <h1>Congratulations!</h1>
+                  <h1>Congratulations {name}!</h1>
                   <p>As a reward for winning get your favorite drink </p>
                 </HeaderContainer>
                 <RewardsContainer>
@@ -166,7 +166,7 @@ const Result = ({ questions, score }) => {
                   <Score>
                     {score}/{questions.length}
                   </Score>
-                  <h1>Not so bad!</h1>
+                  <h1>Not so bad {name}!</h1>
                   <p>
                     Try again and win your drink But here is a prize for your
                     participation{" "}
