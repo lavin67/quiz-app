@@ -9,13 +9,13 @@ import {
   StyledPropertyLabel,
   ButtonContainer,
   QuizPropContForLaptop,
-  amountAndCatCont,
+  AmountAndCatCont,
   TypeAndDifCont,
   NameInput,
   StyledButton,
   EachPropContainer,
+  AmountInput,
 } from "./QuizProperty.styles";
-import { Button } from "../../../UI/Button";
 import { Input } from "../../../UI/Input";
 import { Select } from "../../../UI/Select";
 import { useHistory } from "react-router-dom";
@@ -34,10 +34,46 @@ const QuizPropertyPage = () => {
   const [type, setType] = useState("");
   const [difficulty, setDifficulty] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [isCountAvailable, setIsCountAvailable] = useState(false);
+  const [questionsCount, setQuestionsCount] = useState(null);
 
   const history = useHistory();
 
- 
+  useEffect(() => {
+    if (questionsCount) {
+      setIsCountAvailable(amount <= questionsCount.amount);
+    } else {
+    }
+  }, [amount, questionsCount]);
+
+  useEffect(() => {
+    if (selectedCategory.length > 0) {
+      api
+        .get(`https://opentdb.com/api_count.php?category=${selectedCategory}`)
+        .then((e) => {
+          if (difficulty === "easy") {
+            setQuestionsCount({
+              type: "easy",
+              amount: e.data.category_question_count.total_easy_question_count,
+            });
+            console.log(questionsCount && questionsCount.amount);
+          } else if (difficulty === "medium") {
+            setQuestionsCount({
+              type: "medium",
+              amount:
+                e.data.category_question_count.total_medium_question_count,
+            });
+            console.log(questionsCount && questionsCount.amount);
+          } else if (difficulty === "hard") {
+            setQuestionsCount({
+              type: "hard",
+              amount: e.data.category_question_count.total_hard_question_count,
+            });
+            console.log(questionsCount && questionsCount.amount);
+          }
+        });
+    }
+  }, [selectedCategory, difficulty]);
 
   useEffect(() => {
     api.get("https://opentdb.com/api_category.php").then((res) => {
@@ -68,7 +104,7 @@ const QuizPropertyPage = () => {
 
   const onGenerateTheQuiz = () => {
     history.push(
-      `/quiz?amount=${amount}&category=${selectedCategory}&difficulty=${difficulty}&type=${type}`
+      `/quiz?amount=${amount}&category=${selectedCategory}&difficulty=${difficulty}&type=${type}&name=${name}`
     );
   };
 
@@ -77,9 +113,13 @@ const QuizPropertyPage = () => {
     type.length > 0 &&
     difficulty.length > 0 &&
     name.length > 0 &&
-    amount.length > 0
+    amount.length > 0 &&
+    isCountAvailable
   );
 
+  {
+    console.log(isCountAvailable);
+  }
   //console.log(isDisabled);
   return (
     <MobileContainer>
@@ -96,9 +136,13 @@ const QuizPropertyPage = () => {
       {/* number of questions */}
       <QuizPropsContainer>
         <QuizPropContForLaptop>
-          <amountAndCatCont>
+          <AmountAndCatCont>
             <StyledPropertyLabel>Number of questions:</StyledPropertyLabel>
-            <Input onChange={onAmountChange} value={amount} />
+            <AmountInput
+              style={{ border: isCountAvailable === true ? "green" : "red" }}
+              onChange={onAmountChange}
+              value={amount}
+            />
 
             {/* select category */}
             <StyledPropertyLabel>Select category:</StyledPropertyLabel>
@@ -120,7 +164,7 @@ const QuizPropertyPage = () => {
                   );
                 })}
             </Select>
-          </amountAndCatCont>
+          </AmountAndCatCont>
           <TypeAndDifCont>
             {/* multiple, boolean */}
             <StyledPropertyLabel>Select type:</StyledPropertyLabel>
@@ -163,6 +207,7 @@ const QuizPropertyPage = () => {
             " : " +
             name}
         </div> */}
+
         <StyledButton onClick={onGenerateTheQuiz} primary disabled={isDisabled}>
           START
         </StyledButton>
