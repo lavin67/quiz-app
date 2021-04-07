@@ -76,7 +76,7 @@ export const CategoryAndTypeContainer = styled.div`
   }
 `;
 
-export const TypeAndDifCont = styled.div`
+export const DifficultyAndAmountContainer = styled.div`
   @media ${devices.laptopM} {
     max-width: ${sizes.laptopM};
     display: flex;

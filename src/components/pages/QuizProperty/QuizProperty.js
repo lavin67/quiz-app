@@ -10,7 +10,7 @@ import {
   ButtonContainer,
   QuizPropContForLaptop,
   CategoryAndTypeContainer,
-  TypeAndDifCont,
+  DifficultyAndAmountContainer,
   NameInput,
   StyledButton,
   EachPropContainer,
@@ -166,7 +166,7 @@ const QuizPropertyPage = () => {
               <option value="boolean">True/False</option>
             </Select>
           </CategoryAndTypeContainer>
-          <TypeAndDifCont>
+          <DifficultyAndAmountContainer>
            
 
             <StyledPropertyLabel>Select difficulty:</StyledPropertyLabel>
@@ -193,7 +193,7 @@ const QuizPropertyPage = () => {
               onChange={onAmountChange}
               value={amount}
             />
-          </TypeAndDifCont>
+          </DifficultyAndAmountContainer>
         </QuizPropContForLaptop>
       </QuizPropsContainer>
       <ButtonContainer>
