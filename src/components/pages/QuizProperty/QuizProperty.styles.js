@@ -24,7 +24,7 @@ export const QuizPropsContainer = styled.div`
 `;
 
 export const StyledNameLabel = styled.p`
-  //color: #f3e6ff;
+ 
   color: ${(props) => props.theme.colors.textColor};
   font-size: 1.1rem;
   margin-bottom: 16px;
