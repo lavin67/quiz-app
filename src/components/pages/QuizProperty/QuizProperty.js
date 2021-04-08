@@ -111,9 +111,7 @@ const QuizPropertyPage = () => {
     isCountAvailable
   );
 
-  {
-    console.log(isCountAvailable);
-  }
+  
 
   return (
     <MobileContainer>
