@@ -162,7 +162,7 @@ const Questions = () => {
               ) : (
                 <div>
                   <OptionsContainer
-                  //style={{ marginBottom: "6rem" }}
+                  
                   >
                     {questions[currentQuestion].answers
                       .sort()
@@ -181,7 +181,7 @@ const Questions = () => {
                         );
                       })}
                   </OptionsContainer>
-                  {/* {selectedAnswer} */}
+                 
                   <FooterContainer>
                     <NavLink to="/quiz-property">Quit quiz :(</NavLink>
                     {currentQuestion < questions.length - 1 ? (
