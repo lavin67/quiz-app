@@ -41,29 +41,28 @@ export const Input = styled.input`
         //border: ${(props) => props.theme.colors.wrongRed};
         border: none;
       }
-     
+
       &:focus {
-        border: ${(props) => props.theme.colors.wrongRed};
-       // border: none;
+          border: ${(props) => props.theme.colors.wrongRed};
+          // border: none;
+        }
+        &:hover {
+          border: ${(props) => props.theme.colors.wrongRed};
+          // border: none;
+        }
 
-      }
-
-      border:none;
-      outline: none;
+      border:${(props) => props.theme.colors.wrongRed};
     `}
     ${(props) =>
     props.isAvailabe &&
     css`
-    
-  &:active {
-    border: ${(props) => props.theme.colors.border};
-    
-  }
- 
-  &:focus {
-    border: ${(props) => props.theme.colors.border};
-    
-  }
+      &:active {
+        border: ${(props) => props.theme.colors.border};
+      }
+
+      &:focus {
+        border: ${(props) => props.theme.colors.border};
+      }
       border: none;
       outline: none;
     `}
