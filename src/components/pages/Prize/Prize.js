@@ -17,27 +17,6 @@ import {
 } from "../Result/Result.styles";
 
 const Prize = ({ selectedPrize }) => {
-  const displayPrize = (selectedPrize) => {
-    switch (selectedPrize) {
-      case "whiskey":
-        return WhiskyIcon;
-      case "beer":
-        return BeerIcon;
-      case "tequila":
-        return TequilaIcon;
-      case "rum":
-        return RumIcon;
-      case "wine":
-        return WineIcon;
-      case "vodka":
-        return VodkaIcon;
-      case "martini":
-        return MartiniIcon;
-      case "cocktail":
-        return CocktailIcon;
-    }
-  };
-
   return (
     <MobileContainer>
       <MainContainer>
