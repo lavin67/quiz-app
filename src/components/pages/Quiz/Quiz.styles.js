@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ReactComponent as Luck } from "../../../Icons/Luck.svg";
 import { Button } from "../../../UI/Button";
-import { NavLink } from "react-router-dom";
+
 import { sizes, devices } from "../../../Devices/Devices";
 
 export const HeaderContainer = styled.div`
