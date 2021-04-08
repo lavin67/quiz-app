@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import MobileContainer from "../../../UI/Mobile-Container";
-import MainLogo from "../../../UI/MainLogo";
+
 import { Button } from "../../../UI/Button";
-import { Input } from "../../../UI/Input";
-import { NavLink, useLocation } from "react-router-dom";
+
+import { NavLink } from "react-router-dom";
 import {
   MainContainer,
   HeaderContainer,
@@ -23,7 +23,7 @@ import {
 } from "./Result.styles";
 import Prize from "../Prize/Prize";
 import { useMediaQuery } from "react-responsive";
-import { sizes, devices } from "../../../Devices/Devices";
+import {  devices } from "../../../Devices/Devices";
 
 const Result = ({ questions, score, name }) => {
   const [prizeRecieved, setPrizeRecieved] = useState(false);
