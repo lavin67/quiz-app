@@ -78,10 +78,7 @@ const QuizPropertyPage = () => {
     });
   }, []);
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  
 
   const onNameChange = (e) => {
     setName(e.target.value);
