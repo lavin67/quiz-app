@@ -31,7 +31,7 @@ const QuizPropertyPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [type, setType] = useState("");
   const [difficulty, setDifficulty] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  
   const [isCountAvailable, setIsCountAvailable] = useState(false);
   const [questionsCount, setQuestionsCount] = useState(null);
 
