@@ -84,8 +84,7 @@ export const Description = styled.p`
     line-height: 38px;
     margin-top: 4rem;
     margin-bottom: 4rem;
-   // margin-bottom: 2.1rem;
-    //margin-bottom: 2.1rem;
+  
   }
 `;
 
