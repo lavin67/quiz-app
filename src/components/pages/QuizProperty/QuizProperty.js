@@ -155,8 +155,8 @@ const QuizPropertyPage = () => {
                   );
                 })}
             </Select>
-             {/* multiple, boolean */}
-             <StyledPropertyLabel>Select type:</StyledPropertyLabel>
+            {/* multiple, boolean */}
+            <StyledPropertyLabel>Select type:</StyledPropertyLabel>
             <Select name="type" onChange={onTypeChange} value={type}>
               <option value="" defaultValue="" disabled hidden>
                 Choose here
@@ -167,8 +167,6 @@ const QuizPropertyPage = () => {
             </Select>
           </CategoryAndTypeContainer>
           <DifficultyAndAmountContainer>
-           
-
             <StyledPropertyLabel>Select difficulty:</StyledPropertyLabel>
             <Select
               name="difficulty"
@@ -187,8 +185,16 @@ const QuizPropertyPage = () => {
             {/* number of questions*/}
             <StyledPropertyLabel>Number of questions:</StyledPropertyLabel>
             <Input
-              isAvailable={isCountAvailable === true}
-              isUnavailabe={isCountAvailable === false}
+              isAvailable={isCountAvailable}
+              isUnavailabe={
+                selectedCategory.length > 0 &&
+                type.length > 0 &&
+                difficulty.length > 0 &&
+                name.length > 0 &&
+                amount.length > 0
+                  ? isCountAvailable === false
+                  : false
+              }
               placeholder="Choose a proper amount of questions"
               onChange={onAmountChange}
               value={amount}
