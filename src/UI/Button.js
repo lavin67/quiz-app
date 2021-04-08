@@ -6,7 +6,7 @@ export const Button = styled.button`
   width: 9rem;
   border-radius: 5px;
   border: none;
-  /* margin-top: 2rem; */
+
   font-size: 14px;
   outline: none;
   &:disabled {
@@ -45,19 +45,7 @@ export const Button = styled.button`
     css`
       color: ${(props) => props.theme.colors.textColor};
       background-color: ${(props) => props.theme.colors.inputColor};
-      /* 
-      &:active {
-        border: ${(props) => props.theme.colors.border};
-        background-color: ${(props) => props.theme.colors.inputColor};
-      } */
-      /* &:hover {
-        border: ${(props) => props.theme.colors.border};
-        background-color: ${(props) => props.theme.colors.inputColor};
-      } */
-      /* &:focus {
-        border: ${(props) => props.theme.colors.border};
-        background-color: ${(props) => props.theme.colors.inputColor};
-      } */
+     
       outline: none;
       @media ${devices.laptopM} {
         max-width: ${sizes.laptopM};
