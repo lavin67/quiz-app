@@ -16,6 +16,8 @@ import {
   TheQuestion,
   OptionsContainer,
   FooterContainer,
+  Description,
+  OrdinaryContainer,
 } from "./Quiz.styles";
 
 import axios from "axios";
@@ -95,16 +97,13 @@ const Questions = () => {
       });
   }, []);
 
-
-
-
   return (
     <>
       {result ? (
-        <Result questions={questions} score={score} name={name}/>
+        <Result questions={questions} score={score} name={name} />
       ) : (
         <>
-          {questions.length > 0 && (
+          {questions.length > 0 ? (
             <MobileContainer>
               <HeaderContainer>
                 <CategoryName>
@@ -119,7 +118,7 @@ const Questions = () => {
               </HeaderContainer>
 
               <TheQuestion>
-              {console.log(questions[currentQuestion].correctAnswer) }
+                {console.log(questions[currentQuestion].correctAnswer)}
                 {he.decode(questions[currentQuestion].question)}
               </TheQuestion>
               {type === "multiple" ? (
@@ -137,7 +136,6 @@ const Questions = () => {
                         </Button>
                       );
                     })}
-                    
                   </OptionsContainer>
                   <FooterContainer>
                     {console.log(selectedAnswer)}
@@ -206,6 +204,20 @@ const Questions = () => {
                   </FooterContainer>
                 </div>
               )}
+            </MobileContainer>
+          ) : (
+            <MobileContainer>
+              <OrdinaryContainer>
+                <Description>
+                  Too Many Questions
+                  <br />
+                  Please choose the right amount of questions!
+                </Description>
+
+                <NavLink to="/quiz-property">
+                  <Button primary>GO BACK</Button>
+                </NavLink>
+              </OrdinaryContainer>
             </MobileContainer>
           )}
         </>

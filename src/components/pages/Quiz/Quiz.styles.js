@@ -73,3 +73,30 @@ export const FooterContainer = styled.div`
     }
   }
 `;
+
+export const Description = styled.p`
+  color: ${(props) => props.theme.colors.textColor};
+  font-size: 20px;
+  line-height: 32px;
+  @media ${devices.laptopM} {
+    max-width: ${sizes.laptopM};
+    font-size: 24px;
+    line-height: 38px;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+   // margin-bottom: 2.1rem;
+    //margin-bottom: 2.1rem;
+  }
+`;
+
+export const OrdinaryContainer=styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+${Description}{
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  align-self: center;
+}
+`;
