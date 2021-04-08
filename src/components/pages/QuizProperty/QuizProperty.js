@@ -13,8 +13,6 @@ import {
   DifficultyAndAmountContainer,
   NameInput,
   StyledButton,
-  EachPropContainer,
-  AmountInput,
 } from "./QuizProperty.styles";
 import { Input } from "../../../UI/Input";
 import { Select } from "../../../UI/Select";
