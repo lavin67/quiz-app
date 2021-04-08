@@ -5,6 +5,7 @@ import { Button } from "../../../UI/Button";
 
 import { NavLink, useLocation } from "react-router-dom";
 import Result from "../Result/Result";
+import { ThreeDots } from "svg-loaders-react";
 
 import * as he from "he";
 
@@ -42,6 +43,8 @@ const Questions = () => {
   const [result, setResult] = useState(false);
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState("");
+  const [status, setStatus] = useState("idle");
+
   const location = useLocation();
   const query = queryString.parse(location.search);
   const selectedCategory = query.category;
@@ -71,12 +74,18 @@ const Questions = () => {
     }
   };
 
+  // Sends a request (idle)
+  // Wait for the data to come (pending)
+  // Success (Show the things)
+  // Error (An error has occured1)
   useEffect(() => {
+    setStatus("pending");
     api
       .get(
         `https://opentdb.com/api.php?amount=${amount}&category=${selectedCategory}&difficulty=${difficulty}&type=${type}`
       )
       .then((res) => {
+        setStatus("fulfilled");
         const questions = res.data.results.map((question) => {
           const incorrectAnswers = question.incorrect_answers;
           const correctAnswers = question.correct_answer;
@@ -93,17 +102,47 @@ const Questions = () => {
         });
 
         setQuestions(questions);
-        console.log(type);
+      })
+      .catch((e) => {
+        setStatus("rejected");
       });
   }, []);
 
+  if (status === "pending") {
+    return (
+      <MobileContainer>
+        <OrdinaryContainer>
+          <Description>
+            <ThreeDots width={64} height={64} />
+          </Description>
+        </OrdinaryContainer>
+      </MobileContainer>
+    );
+  }
+  if (questions.length === 0 && type === "boolean" && status === "fulfilled") {
+    return (
+      <MobileContainer>
+        <OrdinaryContainer>
+          <Description>
+            Too Many Questions
+            <br />
+            Please choose the right amount of questions!
+          </Description>
+
+          <NavLink to="/quiz-property">
+            <Button primary>GO BACK</Button>
+          </NavLink>
+        </OrdinaryContainer>
+      </MobileContainer>
+    );
+  }
   return (
     <>
       {result ? (
         <Result questions={questions} score={score} name={name} />
       ) : (
         <>
-          {questions.length > 0 ? (
+          {questions.length > 0 && (
             <MobileContainer>
               <HeaderContainer>
                 <CategoryName>
@@ -161,9 +200,7 @@ const Questions = () => {
                 </div>
               ) : (
                 <div>
-                  <OptionsContainer
-                  
-                  >
+                  <OptionsContainer>
                     {questions[currentQuestion].answers
                       .sort()
                       .reverse()
@@ -181,7 +218,7 @@ const Questions = () => {
                         );
                       })}
                   </OptionsContainer>
-                 
+
                   <FooterContainer>
                     <NavLink to="/quiz-property">Quit quiz :(</NavLink>
                     {currentQuestion < questions.length - 1 ? (
@@ -204,20 +241,6 @@ const Questions = () => {
                   </FooterContainer>
                 </div>
               )}
-            </MobileContainer>
-          ) : (
-            <MobileContainer>
-              <OrdinaryContainer>
-                <Description>
-                  Too Many Questions
-                  <br />
-                  Please choose the right amount of questions!
-                </Description>
-
-                <NavLink to="/quiz-property">
-                  <Button primary>GO BACK</Button>
-                </NavLink>
-              </OrdinaryContainer>
             </MobileContainer>
           )}
         </>

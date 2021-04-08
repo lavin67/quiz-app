@@ -80,7 +80,7 @@ export const Description = styled.p`
   line-height: 32px;
   @media ${devices.laptopM} {
     max-width: ${sizes.laptopM};
-    font-size: 24px;
+    font-size: 28px;
     line-height: 38px;
     margin-top: 4rem;
     margin-bottom: 4rem;
@@ -93,9 +93,18 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+height: 90vh;
 ${Description}{
   margin-top: 4rem;
   margin-bottom: 4rem;
   align-self: center;
+  text-align: center;
 }
+${Button} {
+    @media ${devices.laptopM} {
+      max-width: ${sizes.laptopM};
+
+      font-size: 16px;
+    }
+  }
 `;
