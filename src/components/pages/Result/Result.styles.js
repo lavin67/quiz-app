@@ -1,7 +1,4 @@
 import styled from "styled-components";
-import { ReactComponent as Luck } from "../../../Icons/Luck.svg";
-import { Button } from "../../../UI/Button";
-import { NavLink } from "react-router-dom";
 import { ReactComponent as Whisky } from "../../../Icons/Whisky.svg";
 import { ReactComponent as Wine } from "../../../Icons/wine.svg";
 import { ReactComponent as Beer } from "../../../Icons/beer.svg";
@@ -78,7 +75,7 @@ export const RewardsContainer = styled.div`
   justify-content: center;
   justify-items: center;
   align-content: center;
-  
+
   @media ${devices.laptopM} {
     max-width: ${sizes.laptopM};
     display: flex;
