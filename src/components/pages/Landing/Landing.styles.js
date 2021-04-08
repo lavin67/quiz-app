@@ -13,8 +13,6 @@ export const Description = styled.p`
     line-height: 38px;
     margin-top: 4rem;
     margin-bottom: 4rem;
-   // margin-bottom: 2.1rem;
-    //margin-bottom: 2.1rem;
   }
 `;
 
@@ -36,9 +34,6 @@ export const LearningIconContainer = styled.div`
     flex-direction: column;
     justify-content: flex-end;
     margin-top: 4rem;
-    //margin: 5rem;
-    //margin-right: 0rem;
-    //margin-left: 12rem;
     margin-left: 6rem;
   }
 `;

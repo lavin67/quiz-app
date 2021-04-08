@@ -9,7 +9,6 @@ import {
   MainContainer,
   StyledButton,
 } from "./Landing.styles";
-//import { Button } from "../../../UI/Button";
 import { NavLink } from "react-router-dom";
 
 const LandingPage = () => {
