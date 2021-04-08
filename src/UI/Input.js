@@ -29,7 +29,7 @@ export const Input = styled.input`
     css`
       color: ${(props) => props.theme.colors.textColor};
       background-color: ${(props) => props.theme.colors.inputColor};
-      //border: ${(props) => props.theme.colors.border};
+      
 
       outline: none;
     `}
@@ -38,17 +38,17 @@ export const Input = styled.input`
     props.isUnavailabe &&
     css`
       &:active {
-        //border: ${(props) => props.theme.colors.wrongRed};
+        
         border: none;
       }
 
       &:focus {
           border: ${(props) => props.theme.colors.wrongRed};
-          // border: none;
+      
         }
         &:hover {
           border: ${(props) => props.theme.colors.wrongRed};
-          // border: none;
+          
         }
 
       border:${(props) => props.theme.colors.wrongRed};
