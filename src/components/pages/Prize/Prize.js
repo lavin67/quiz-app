@@ -1,20 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import MobileContainer from "../../../UI/Mobile-Container";
-import MainLogo from "../../../UI/MainLogo";
+
 import { Button } from "../../../UI/Button";
-import { Input } from "../../../UI/Input";
-import { NavLink, useLocation } from "react-router-dom";
+
+import { NavLink } from "react-router-dom";
 import { MainContainer, Description, PrizeContainer } from "./Prize.styles";
-import {
-  WhiskyIcon,
-  BeerIcon,
-  TequilaIcon,
-  RumIcon,
-  WineIcon,
-  VodkaIcon,
-  MartiniIcon,
-  CocktailIcon,
-} from "../Result/Result.styles";
+
 
 const Prize = ({ selectedPrize }) => {
   return (
