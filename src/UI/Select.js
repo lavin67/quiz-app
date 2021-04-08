@@ -27,7 +27,7 @@ export const Select = styled.select`
     css`
       color: ${(props) => props.theme.colors.textColor};
       background-color: ${(props) => props.theme.colors.inputColor};
-      //border: ${(props) => props.theme.colors.border};
+     
 
       outline: none;
     `}
