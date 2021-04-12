@@ -171,7 +171,7 @@ const Questions = () => {
                           onClick={() => handleSelectedAnswer(answer)}
                           key={answer}
                         >
-                          {answer}
+                          {he.decode(answer)}
                         </Button>
                       );
                     })}
